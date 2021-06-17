@@ -1,0 +1,81 @@
+<button class="text-center  cssbutton   font-bold py-2 px-4 rounded mx-auto block mt-5 " (click)="TrueDeparture()"> Nueva partida
+</button>
+
+
+<button class="text-center  cssbutton   font-bold py-2 px-4 rounded mx-auto block mt-5 " (click)="falseDeparture()"> unirse a partida 
+</button>
+<div *ngIf="nowDeparture" >
+
+    <div *ngIf="newDeparture">
+
+        <h1>crear una nueva</h1>
+    
+        <form [formGroup]="usuarioForm" (ngSubmit)="create(usuarioForm)">
+    
+            <div class="form-group">
+                <label> Nombre</label>
+                <input [ngClass]="{'is-invalid':usuarioForm.get('name')?.hasError('required')}" type="text" class="form-control" formControlName="name" />
+    
+            </div>
+    
+            <div class="form-group">
+                <label> Id  juego</label>
+                <input [ngClass]="{'is-invalid':usuarioForm.get('idGames')?.hasError('required')}" type="text" class="form-control" formControlName="idGames" />
+    
+            </div>
+    
+    
+    
+            <br>
+            <button class="btn btn-primary" type="submit" [disabled]="usuarioForm.invalid">
+                unirse
+          
+            </button>
+        </form>
+    
+    </div>
+    
+    <div *ngIf="joinDeparture">
+    
+        <h1>unirse</h1>
+    
+        <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit(usuarioForm)">
+    
+            <div class="form-group">
+                <label> Nombre</label>
+                <input [ngClass]="{'is-invalid':usuarioForm.get('name')?.hasError('required')}" type="text" class="form-control" formControlName="name" />
+    
+            </div>
+    
+            <div class="form-group">
+                <label> Id  juego</label>
+                <input [ngClass]="{'is-invalid':usuarioForm.get('idGames')?.hasError('required')}" type="text" class="form-control" formControlName="idGames" />
+    
+            </div>
+    
+    
+    
+            <br>
+            <button class="btn btn-primary" type="submit" [disabled]="usuarioForm.invalid">
+                unirse
+          
+            </button>
+        </form>
+    </div>
+</div>
+
+
+<div *ngIf="table" >
+    <div class="header">
+        <h1 class="text-center text-orange " *ngIf="gameService.isGameRunning" [ngClass]="{'text-teal': gameService.activePlayer == 'O'}">
+            {{ gameService.activePlayer }}'S TURN
+        </h1>
+        <h1 class="text-center text-grey-darker" *ngIf="!gameService.isGameRunning"> Tic-Tac-Toe </h1>
+    </div>
+    <app-board></app-board>
+    <h1 class="text-center  text-grey-darker" *ngIf="gameService.winner"> {{gameService.activePlayer }} Gano </h1>
+    
+    <button class="text-center  cssbutton   font-bold py-2 px-4 rounded mx-auto block mt-5 " *ngIf="gameService.gameOver" (click)="resetGame()"> restaurar Juego 
+    </button>  
+</div>
+

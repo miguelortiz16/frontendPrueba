@@ -1,0 +1,31 @@
+p {
+    font-family: Lato;
+}
+
+h1 {
+    transition: color .2s;
+}
+
+h1 :leave {
+    transition: display 4s;
+}
+
+.header {
+    margin-top: 100px;
+}
+
+.text-grey-darker {
+    --tw-text-opacity: 1;
+    color: rgba(249, 250, 251, var(--tw-text-opacity));
+}
+
+.cssbutton {
+    --tw-bg-opacity: 1;
+    background-color: rgba(156, 163, 175, var(--tw-bg-opacity));
+    text-align: center;
+    font-weight: 700;
+    width: 33.33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
