@@ -116,7 +116,7 @@ if (localStorage.getItem("form1")) {
    this.httpClient.post(`${this.url}getGame`,data).toPromise();
 }
 
- 
+ Return this.board;
    
   }
 
